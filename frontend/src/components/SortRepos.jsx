@@ -1,26 +1,25 @@
 import React from 'react'
 
-const SortRepos = () => {
+const SortRepos = ({onSort, sortType}) => {
+  const BUTTONS = [
+    {type: "recent", text:"Most Recent", color: "border-blue-500"},
+    {type: "stars", text:"Most Stars", color: "border-yellow-500"},
+    {type: "forks", text:"Most Forks", color: "border-purple-500"},
+  ];
   return (
     <div className='flex mb-2 justify-center lg:justify-end'>
-        <button
-				type='button'
-				className="py-2.5 px-5 me-2 mb-2 text-xs sm:text-sm font-medium focus:outline-none rounded-lg bg-glass"
+    {BUTTONS.map((button)=>(
+      <button
+        key={button.type}
+				type="button"
+				className={`py-2.5 px-5 me-2 mb-2 text-xs sm:text-sm font-medium focus:outline-none rounded-lg bg-glass
+                    ${button.type === sortType ? button.color : ""}`}
+        onClick={()=>onSort(button.type)}
         >
-				Most Recent
-        </button>
-        <button
-            type='button'
-            className="py-2.5 px-5 me-2 mb-2  text-xs sm:text-sm font-medium focus:outline-none rounded-lg bg-glass"
-        >
-            Most Stars
-        </button>
-        <button
-            type='button'
-            className="py-2.5 px-5 me-2 mb-2  text-xs sm:text-sm font-medium focus:outline-none rounded-lg bg-glass"
-        >
-            Most Forks
-        </button>
+				{button.text}
+      </button>
+    ))}
+        
     </div>
   )
 }

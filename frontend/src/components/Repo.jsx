@@ -5,6 +5,7 @@ import {formatDate, formatMemberSince} from "../utils/functions";
 import { PROGRAMMING_LANGUAGES } from '../utils/costants';
 import toast from 'react-hot-toast';
 const Repo = ({repo}) => {
+	console.log(repo);
 	const formattedDate = formatDate(repo?.created_at);
 	const handleCloneClick = async (repo) =>{
 		try {
@@ -60,10 +61,10 @@ const Repo = ({repo}) => {
 				Released on {formattedDate}
 			</time>
 			<p className='mb-4 text-base font-normal text-gray-500'>
-				{Repo?.description ? repo?.description.slice(0,500) : "No description provided"}
+				{repo?.description ? repo?.description.slice(0,500) : "No description provided"}
 			</p>
-			{PROGRAMMING_LANGUAGES[repo?.laguage] ? (
-				<img src={PROGRAMMING_LANGUAGES[repo?.laguage]} alt='Programming language icon' className='h-8' />
+			{PROGRAMMING_LANGUAGES[repo?.language] ? (
+				<img src={PROGRAMMING_LANGUAGES[repo?.language]} alt='Programming language icon' className='h-8' />
 			) : null}
     </li>
   );

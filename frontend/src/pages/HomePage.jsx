@@ -27,9 +27,10 @@ const getUserProfileAndRepos = useCallback(async (username="burakorkmez")=>{
 
 		const repoRes = await fetch(userProfile.repos_url);
 		const repos = await repoRes.json();
+
 		repos.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
 		setRepos(repos);
-		setLoading(false);
+		
 		return {userProfile, repos};
 	}catch{
 		toast.error(error.message)

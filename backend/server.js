@@ -1,5 +1,9 @@
 import express from 'express';
-import userRoutes from "./routes/user.routes.js"
+import dotenv from "dotenv";
+import userRoutes from "./routes/user.routes.js";
+
+dotenv.config();
+
 const app = express();
 
 app.get("/",(req,res)=>{

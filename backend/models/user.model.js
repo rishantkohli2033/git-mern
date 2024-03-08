@@ -26,17 +26,16 @@ const userSchema = new mongoose.Schema({
             username: {
                 type: String,
                 required: true,
-                unique: true,
             },
             avatarUrl: {
                 type: String,
             },
-            likedData: {
-                type:Date,
-                default:Date.now,
+            likedDate: {
+                type: Date,
+                default: Date.now,
             },
-        }
-    ]
+        },
+    ],
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema);
